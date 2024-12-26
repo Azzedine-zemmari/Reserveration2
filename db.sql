@@ -9,7 +9,7 @@ email varchar(40) not null unique,
 password varchar(40) ,
 role enum("user","admin","superAdmin") default "user"
 );
-use user;
+
 insert into Rev2.user(nom,prenom,email,password,role) values("Azzedine","zemmari","azzedine@gmail.com","azzedine2004","superAdmin");
 insert into Rev2.user(nom,prenom,email,password,role) values("Ilyass","Bahsi","ilyass@gmail.com","ilyas2000","admin");
 

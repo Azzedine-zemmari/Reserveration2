@@ -1,3 +1,25 @@
+<?php
+require "./Admin.php";
+
+//get class Admin
+
+if(isset($_POST['submit'])){
+    $name =htmlspecialchars(trim( $_POST['nom']));
+    $prenom = htmlspecialchars(trim($_POST['prenom']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $password = htmlspecialchars(trim($_POST['password']));
+    $Cls = new Admins();
+    $method = $Cls->registerAdmin($name,$prenom,$email,$password);
+    if($method){
+        header("Location: ./Admin.php");
+    }
+    else{
+        echo "errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrror";
+    }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +46,7 @@
             </div>
 
             <!-- Form -->
-            <form id="signupForm" action="./registerPros.php" method="POST" class="mt-8 space-y-6">
+            <form id="signupForm" action="" method="POST" class="mt-8 space-y-6">
                 <div class="space-y-4">
                     <!-- Name -->
                     <div>
@@ -69,6 +91,7 @@
 
                 <div>
                     <button type="submit" 
+                    name="submit"
                         class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
                         Sign up
                     </button>
