@@ -4,6 +4,11 @@ require_once "./Config.php";
 
 class Admins{
     private $conn;
+    public $name;
+    public $prenom;
+    public $email;
+    public $password;
+    private $tableName;
 
     public function __construct()
     {
@@ -22,6 +27,6 @@ class Admins{
         }
     } 
     public function registerAdmin(){
-        
+        // $query = "insert into ". $this->tableName . ""
     }
 }
