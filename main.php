@@ -1,3 +1,11 @@
+<?php 
+require "./Admin.php";
+$AdminClass = new Admins();
+$adminFn = $AdminClass->getAdmins();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,26 +53,26 @@
                         <th class="px-2 md:px-6 py-3">nom</th>
                         <th class="px-2 md:px-6 py-3">prenom</th>
                         <th class="px-2 md:px-6 py-3">email</th>
-                        <th class="px-2 md:px-6 py-3">telephone</th>
-                        <th class="px-2 md:px-6 py-3">adresse</th>
-                        <th class="px-2 md:px-6 py-3">date_naissance</th>
+                        <th class="px-2 md:px-6 py-3">password</th>
+                        <th class="px-2 md:px-6 py-3">role</th>
                         <th class="px-2 md:px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($adminFn as $admin): ?>
                     <tr class="border-b">
-                        <td class="px-2 md:px-6 py-3"></td>
-                        <td class="px-2 md:px-6 py-3"></td>
-                        <td class="px-2 md:px-6 py-3"></td>
-                        <td class="px-2 md:px-6 py-3"></td>
-                        <td class="px-2 md:px-6 py-3"></td>
-                        <td class="px-2 md:px-6 py-3"></td>
-                        <td class="px-2 md:px-6 py-3"></td>
+                        <td class="px-2 md:px-6 py-3"><?php echo $admin['id'] ?></td>
+                        <td class="px-2 md:px-6 py-3"><?php echo $admin['nom'] ?></td>
+                        <td class="px-2 md:px-6 py-3"><?php echo $admin['prenom'] ?></td>
+                        <td class="px-2 md:px-6 py-3"><?php echo $admin['email'] ?></td>
+                        <td class="px-2 md:px-6 py-3"><?php echo $admin['password'] ?></td>
+                        <td class="px-2 md:px-6 py-3"><?php echo $admin['role'] ?></td>
                         <td class="px-2 md:px-6 py-3 flex space-x-2">
                             <a class="bg-blue-400 text-white p-3 rounded-lg" href="./Client/EditClient.php?client_id=">Edit</a>
                             <a class="bg-red-400 text-white p-3 rounded-lg" href="./Client/DeleteClient.php?client_id=">Delete</a>
                         </td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
