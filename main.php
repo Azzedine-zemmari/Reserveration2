@@ -43,7 +43,7 @@ $adminFn = $AdminClass->getAdmins();
         <section class="w-screen md:w-[calc(100%-224px)]">
         <div class="bg-gradient-to-r from-[#2f88da] to-[#07075a] px-5 py-3 flex justify-between w-full rounded-bl-lg rounded-br-lg">
             <h1 class="text-white font-bold">Client table</h1>
-            <a class="bg-green-400 text-white px-2 py-1 rounded-md" href="./Client/client.php">add client</a>
+            <a class="bg-green-400 text-white px-2 py-1 rounded-md" href="./RegisterAdmin.php">add admin</a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left table-auto">
