@@ -105,5 +105,19 @@ class Activite{
     }   
 
 
+      public function delete($id){
+        $sql = "delete from activite where idActivite = :id";
 
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(":id",$id);
+
+        if($stmt->execute()){
+            header("Location: ./AcitiviteDash.php");
+            return true;
+        }
+        else{
+            return false;
+        }
+      }
 }
