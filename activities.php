@@ -1,6 +1,6 @@
 <?php
 
-// Classe de connexion à la base de données
+
 class Connection {
     private $host = "localhost";
     private $dbName = "Rev2";
@@ -8,7 +8,15 @@ class Connection {
     private $userPass = "";
     private $db;
 
-    // Méthode pour obtenir la connexion
+    public function __Sethost($host) {
+        $this->host = $host;
+    }
+    public function __GetHOST() {
+        return $this->host;
+    }
+    public function __construct() {
+        $this->db = $this->getConnection();
+    }
     public function getConnection() {
         try {
             if (!$this->db) {
@@ -24,23 +32,18 @@ class Connection {
             die("La connexion a échoué: " . $e->getMessage());
         }
     }
-
-    // Méthode pour fermer la connexion
     public function closeConnection() {
         $this->db = null;
     }
 }
 
-// Classe pour gérer les activités
 class Activite {
     private $db;
 
-    // Constructeur qui prend la connexion en paramètre
     public function __construct($db) {
         $this->db = $db;
     }
 
-    // Méthode pour obtenir toutes les activités
     public function getAllActivites() {
         $stmt = $this->db->prepare('SELECT * FROM activite');
         $stmt->execute();
@@ -48,9 +51,8 @@ class Activite {
     }
 }
 
-// Classe pour afficher les données
 class Display {
-    // Méthode pour afficher une activité
+    //afficher une activité
     public function showActivites($activites) {
         foreach ($activites as $activite) {
             echo '
@@ -70,14 +72,11 @@ class Display {
 }
 
 // Code principal
-$conn = new Connection();  // Créer une instance de Connection
-$db = $conn->getConnection();  // Obtenir la connexion à la base de données
+$conn = new Connection();
+$db = $conn->getConnection();
 
-// Créer une instance d'Activite et récupérer les activités
 $activiteObj = new Activite($db);
 $activites = $activiteObj->getAllActivites();
-
-// Créer une instance de Display pour afficher les activités
 $display = new Display();
 ?>
 
@@ -92,27 +91,31 @@ $display = new Display();
 <body class="bg-gray-50">
 
     <!-- Navigation -->
-    <nav class="bg-blue-600 p-4 text-white">
-        <ul class="flex space-x-4 justify-center">
-            <li><a href="#" class="hover:text-gray-200">Home</a></li>
-            <li><a href="#activities" class="hover:text-gray-200">Activités</a></li>
-            <li><a href="#contact" class="hover:text-gray-200">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="flex justify-around px-2 py-3 bg-gray-800 text-white">
+        <img src="./images/logo-white.png" class="w-40" alt="Logo">
+        <div class="flex  gap-3 items-center">
+                <ul class="flex space-x-4 justify-center">
+                    <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                    <li><a href="#activities" class="hover:text-gray-200">Activités</a></li>
+                    <li><a href="#contact" class="hover:text-gray-200">Contact</a></li>
+                </ul>
+                <label for="Recherche" class="p-2 w-[160px] bg-gray-300 rounded-2xl text-black">Recherche</label>
+        </div>
+    </header>
 
-    <!-- Contenu de la page -->
     <section id="activities" class="p-8">
         <h1 class="text-4xl text-center font-bold mb-10 text-gray-800">Nos Activités</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <?php 
             // Afficher les activités
-            $display->showActivites($activites);
-            ?>
+            $display->showActivites($activites); ?>
         </div>
     </section>
+    <div class="flex justify-center">
+        <hr class="w-[80%] border-2 rounded-lg border-gray-500">
+    </div>
 
-    <!-- Future Activities -->
     <section class="py-16">
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-gray-800 mb-12">Future Activities</h2>
@@ -177,15 +180,12 @@ $display = new Display();
     </div>
 </section>  
 
-    <!-- Footer -->
-    <footer class="bg-blue-600 text-white p-6 text-center">
-        <p>&copy; 2024 Notre Agence - Tous droits réservés</p>
-    </footer>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white p-6 text-center">
+    <p>&copy; 2024 Notre Agence - Tous droits réservés</p>
+</footer>
 
 </body>
 </html>
 
-<?php
-// Fermer la connexion à la base de données
-$conn->closeConnection();
-?>
+<?php $conn->closeConnection();?>
