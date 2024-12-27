@@ -65,7 +65,7 @@ $res = $Reservation->getReservation();
                         <td class="px-2 md:px-6 py-3"><?php echo $c['nom'] ?></td>
                         <td class="px-2 md:px-6 py-3"><?php echo $c['status'] ?></td>
                         <td class="px-2 md:px-6 py-3 flex space-x-2">
-                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./confirmeActivite.php?activite_id=<?php echo $c['id_reservation'] ?>">Confirme</a>
+                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./ConfirmRes.php?activite_id=<?php echo $c['id_reservation'] ?>">Confirme</a>
                             <a class="bg-red-400 text-white p-3 rounded-lg" href="./DenyActivite.php?activite_id=<?php echo $c['id_reservation'] ?>">Deny</a>
                         </td>
                     </tr>
