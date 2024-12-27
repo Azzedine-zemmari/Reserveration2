@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require "./Reservation.php";
 if (!isset($_SESSION['user_id']) || (!($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin'))) {
     echo "u shouldnot be here get out ";
@@ -29,7 +28,7 @@ if(isset($_POST['submit'])){
     $cls = new Reservation();
     $obj = $cls->createReservation($userID,$menu);
     if($obj){
-        echo "okay";
+        header("Location: ./HistoryReservation.php");
     }
     else{
         echo "not okay";

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require "./Reservation.php";
 if (!isset($_SESSION['user_id']) || (!($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin'))) {
     echo "u shouldnot be here get out ";

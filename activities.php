@@ -64,11 +64,9 @@ class Display {
                 <div class="p-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">' . htmlspecialchars($activite['titre']) . '</h2>
                     <p class="text-gray-600 mb-4">' . htmlspecialchars($activite['description']) . '</p>
-                    <form method="POST">
-                        <button type="submit" name="reservation" class="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300">
+                        <a href="./Client/ReservationPage.php" name="reservation" class="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300">
                             Réservation
-                        </button>
-                    </form>
+                        </a>
                 </div>
             </div>';
         }
