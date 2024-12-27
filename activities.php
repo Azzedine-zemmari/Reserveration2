@@ -108,24 +108,71 @@ $display = new Display();
 <body class="bg-gray-50">
 
     <!-- Navigation -->
-    <header class="flex justify-around px-2 py-3 bg-gray-800 text-white">
-        <img src="./images/logo-white.png" class="w-40" alt="Logo">
-        <div class="flex  gap-3 items-center">
-                <ul class="flex space-x-4 justify-center">
-                    <li class="p-2"><a href="#" class="hover:text-gray-200">Home</a></li>
-                    <li class="p-2"><a href="#activities" class="hover:text-gray-200">Activités</a></li>
-                    <li class="p-2"><a href="activities.php#reviews-contact">Contact</a></li>
-                    <li class="p-2"><a href="activities.php#about-us">About Us</a></li>
-                    <li class="p-2"><a href="LoginAdmin.php">Login</a></li>
-                </ul>
-                <!-- <label for="Recherche" class="p-2 w-[160px] bg-gray-300 rounded-2xl text-black">Recherche</label> -->
-                <form method="POST" action="" class="flex items-center h">
-                    <input name="searchTerm" type="text" class="w-[200px] p-2 bg-gray-200 rounded-l-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Recherche">
-                    <button class="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-800 transition duration-300">Recherche</button>
-                </form>
+    <header class="bg-gray-800 text-white px-4 py-3 relative">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <img src="./images/logo-white.png" class="h-8 w-auto md:h-10" alt="Logo">
+                
+                <!-- Burger Menu Button -->
+                <button id="burger-menu" class="md:hidden p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"/>
+                    </svg>
+                </button>
 
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center justify-between flex-1 ml-8">
+                    <nav>
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="hover:text-gray-200 transition-colors">Home</a></li>
+                            <li><a href="#activities" class="hover:text-gray-200 transition-colors">Activités</a></li>
+                            <li><a href="activities.php#reviews-contact" class="hover:text-gray-200 transition-colors">Contact</a></li>
+                            <li><a href="activities.php#about-us" class="hover:text-gray-200 transition-colors">About Us</a></li>
+                            <li><a href="LoginAdmin.php" class="hover:text-gray-200 transition-colors">Login</a></li>
+                        </ul>
+                    </nav>
+
+                    <form method="POST" action="" class="flex ml-6">
+                        <input
+                            name="searchTerm"
+                            type="text"
+                            class="w-48 p-2 bg-gray-200 rounded-l-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            placeholder="Recherche"
+                        >
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-800 transition duration-300">
+                            Recherche
+                        </button>
+                    </form>
+                </div>
             </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <nav class="space-y-3">
+                    <ul class="flex flex-col space-y-2">
+                        <li><a href="#" class="block hover:text-gray-200 transition-colors py-2">Home</a></li>
+                        <li><a href="#activities" class="block hover:text-gray-200 transition-colors py-2">Activités</a></li>
+                        <li><a href="activities.php#reviews-contact" class="block hover:text-gray-200 transition-colors py-2">Contact</a></li>
+                        <li><a href="activities.php#about-us" class="block hover:text-gray-200 transition-colors py-2">About Us</a></li>
+                        <li><a href="LoginAdmin.php" class="block hover:text-gray-200 transition-colors py-2">Login</a></li>
+                    </ul>
+                    <form method="POST" action="" class="flex flex-col space-y-2">
+                        <input
+                            name="searchTerm"
+                            type="text"
+                            class="w-full p-2 bg-gray-200 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            placeholder="Recherche"
+                        >
+                        <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">
+                            Recherche
+                        </button>
+                    </form>
+                </nav>
+            </div>
+        </div>
     </header>
+
 
     <section id="activities" class="p-8">
         <h1 class="text-4xl text-center font-bold mb-10 text-gray-800">Nos Activités</h1>
@@ -336,7 +383,37 @@ $display = new Display();
 <footer class="bg-gray-800 text-white p-6 text-center">
     <p>&copy; 2024 Notre Agence - Tous droits réservés</p>
 </footer>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerMenu = document.getElementById('burger-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            burgerMenu.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                
+                const svg = burgerMenu.querySelector('svg');
+                if (mobileMenu.classList.contains('hidden')) {
+                    svg.innerHTML = `
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"/>
+                    `;
+                } else {
+                    svg.innerHTML = `
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    `;
+                }
+            });
 
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) { // md breakpoint
+                    mobileMenu.classList.add('hidden');
+                    const svg = burgerMenu.querySelector('svg');
+                    svg.innerHTML = `
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"/>
+                    `;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 
