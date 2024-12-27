@@ -54,33 +54,15 @@ class Display {
     public function showActivites($activites) {
         foreach ($activites as $activite) {
             echo '
-            <div class="mb-16 bg-white shadow-lg rounded-lg p-8">
-                <h2 class="text-3xl font-bold text-primary mb-6 border-b-2 border-primary pb-2">
-                    ' . htmlspecialchars($activite['titre']) . '
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="border rounded-lg p-4 shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
-                        <h3 class="text-2xl font-semibold text-gray-700 mb-4 text-center">
-                            ' . htmlspecialchars($activite['titre']) . '
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">' . htmlspecialchars($activite['description']) . '</p>';
-            
-            if (!empty($activite['image'])) {
-                echo '
-                        <img 
-                            src="' . htmlspecialchars($activite['image']) . '" 
-                            alt="' . htmlspecialchars($activite['titre']) . '" 
-                            class="w-full h-32 object-cover rounded-md mt-4"
-                        >';
-            }
-            
-            echo '
-                        <form method="POST">
-                            <button type="submit" name="reservation" class="w-[50%] py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                                Réservation
-                            </button>
-                        </form>
-                    </div>
+            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">' . htmlspecialchars($activite['titre']) . '</h2>
+                    <p class="text-gray-600 mb-4">' . htmlspecialchars($activite['description']) . '</p>
+                    <form method="POST">
+                        <button type="submit" name="reservation" class="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300">
+                            Réservation
+                        </button>
+                    </form>
                 </div>
             </div>';
         }
@@ -109,22 +91,32 @@ $display = new Display();
 </head>
 <body class="bg-gray-50">
 
+    <!-- Navigation -->
+    <nav class="bg-blue-600 p-4 text-white">
+        <ul class="flex space-x-4 justify-center">
+            <li><a href="#" class="hover:text-gray-200">Home</a></li>
+            <li><a href="#activities" class="hover:text-gray-200">Activités</a></li>
+            <li><a href="#contact" class="hover:text-gray-200">Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Contenu de la page -->
-    <section class="p-8">
+    <section id="activities" class="p-8">
         <h1 class="text-4xl text-center font-bold mb-10 text-gray-800">Nos Activités</h1>
 
-        <?php 
-        // Afficher les activités
-        $display->showActivites($activites);
-        ?>
-
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <?php 
+            // Afficher les activités
+            $display->showActivites($activites);
+            ?>
+        </div>
     </section>
 
+    <!-- Future Activities -->
     <section class="py-16">
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-gray-800 mb-12">Future Activities</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Activity Card 1 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Surfing" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -132,7 +124,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Explore the waves with exciting surfing experiences on stunning beaches.</p>
                 </div>
             </div>
-            <!-- Activity Card 2 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img4.jpg" alt="Skydiving" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -140,7 +131,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Feel the thrill of freefalling from thousands of feet in the sky.</p>
                 </div>
             </div>
-            <!-- Activity Card 3 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Party" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -148,7 +138,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Join exciting party events with vibrant music and dancing.</p>
                 </div>
             </div>
-            <!-- Activity Card 4 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Dessert Tasting" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -156,7 +145,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Indulge in an exclusive tasting experience of gourmet desserts.</p>
                 </div>
             </div>
-            <!-- Activity Card 5 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Vegetarian Cooking" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -164,7 +152,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Learn to prepare delicious and healthy vegetarian dishes.</p>
                 </div>
             </div>
-            <!-- Activity Card 6 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Yoga Classes" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -172,7 +159,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Relax and rejuvenate with expert-led yoga sessions for all levels.</p>
                 </div>
             </div>
-            <!-- Activity Card 7 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Hiking Adventures" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -180,7 +166,6 @@ $display = new Display();
                     <p class="text-gray-600 text-sm">Discover breathtaking landscapes on guided hiking tours.</p>
                 </div>
             </div>
-            <!-- Activity Card 8 -->
             <div class="bg-white shadow-2xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
                 <img src="./images/img7.jpg" alt="Beach Volleyball" class="w-full h-48 object-cover rounded-t-lg">
                 <div class="p-6">
@@ -190,7 +175,12 @@ $display = new Display();
             </div>
         </div>
     </div>
-</section>
+</section>  
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white p-6 text-center">
+        <p>&copy; 2024 Notre Agence - Tous droits réservés</p>
+    </footer>
 
 </body>
 </html>
