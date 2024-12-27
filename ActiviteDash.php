@@ -68,8 +68,8 @@ $activitFn = $ActiviteClass->getActivite();
                             <td class="px-2 md:px-6 py-3"><?php echo $act['type']; ?></td>
                             <td class="px-2 md:px-6 py-3"><?php echo $act['places_disponibles']; ?></td>
                             <td class="px-2 md:px-6 py-3 flex space-x-2">
-                                <a class="bg-blue-400 text-white p-3 rounded-lg" href="./FormUpdateActivite.php?activite_id=<?php echo $act['idActivite']; ?>">Modifier</a>
-                                <a class="bg-red-400 text-white p-3 rounded-lg" href="./deleteActivite.php?activite_id=<?php echo $act['idActivite']; ?>">Supprimer</a>
+                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./FormUpdateActivite.php?activite_id=<?php echo $act['idActivite']; ?>">Modifier</a>
+                            <a class="bg-red-400 text-white p-3 rounded-lg" href="./deleteActivite.php?activite_id=<?php echo $act['idActivite']; ?>">Supprimer</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
