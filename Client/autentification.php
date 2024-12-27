@@ -38,5 +38,31 @@ class clientAuth{
             return false;
         }
 }
+public function loginClient($email,$password){
+    $this->email = $email;
+
+    $sql = "select * from user where email = :email";
+
+    $stmt = $this->conn->prepare($sql);
+
+    $stmt->bindParam(":email",$this->email);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0){
+        $USER = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if(password_verify($password,$USER['password'])){
+            return true;
+        }
+        else{
+            echo "invalid password";
+        }
+
+    }
+    else{
+        echo "this email not found";
+    }
+}
 
 }

@@ -61,13 +61,15 @@ public function loginAdmin($email,$password){
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if(password_verify($password,$user['password'])){
-            return $user;
+            return true;
         }
         else{
+            return false;
             echo "Invalid password";
         }
     }
     else{
+        return false;
         echo "no user found";
     }
 }
