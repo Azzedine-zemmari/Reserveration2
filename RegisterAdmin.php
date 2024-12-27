@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
     $Cls = new Admins();
     $method = $Cls->registerAdmin($name,$prenom,$email,$password);
     if($method){
-        header("Location: ./Admin.php");
+        header("Location: ./main.php");
     }
     else{
         echo "errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrror";
