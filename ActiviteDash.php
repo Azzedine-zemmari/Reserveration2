@@ -38,7 +38,7 @@ $activitFn = $ActiviteClass->getActivite();
             </div>
             <div class="overflow-x-auto">
                 <?php if (isset($_GET['success'])): ?>
-                    <p class="text-green-500 text-center py-2">Activité supprimée avec succès.</p>
+                    <!-- <p class="text-green-500 text-center py-2">Activité supprimée avec succès.</p> -->
                 <?php elseif (isset($_GET['error'])): ?>
                     <p class="text-red-500 text-center py-2">Erreur lors de la suppression de l'activité.</p>
                 <?php endif; ?>

@@ -87,7 +87,7 @@
         <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
             <!-- Logo -->
             <div class="flex justify-center">
-                <img src="./image/ochef-removebg-preview.png" alt="Logo" class="h-20 w-auto">
+                <img src="./images/hire.png" alt="Logo" class="h-20 w-auto">
             </div>
 
             <!-- Header -->

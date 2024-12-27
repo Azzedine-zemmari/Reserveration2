@@ -125,7 +125,7 @@ $display = new Display();
                 <div class="hidden md:flex items-center justify-between flex-1 ml-8">
                     <nav>
                         <ul class="flex space-x-6">
-                            <li><a href="#" class="hover:text-gray-200 transition-colors">Home</a></li>
+                            <!-- <li><a href="#" class="hover:text-gray-200 transition-colors">Home</a></li> -->
                             <li><a href="#activities" class="hover:text-gray-200 transition-colors">Activités</a></li>
                             <li><a href="activities.php#reviews-contact" class="hover:text-gray-200 transition-colors">Contact</a></li>
                             <li><a href="activities.php#about-us" class="hover:text-gray-200 transition-colors">About Us</a></li>
@@ -151,7 +151,7 @@ $display = new Display();
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
                 <nav class="space-y-3">
                     <ul class="flex flex-col space-y-2">
-                        <li><a href="#" class="block hover:text-gray-200 transition-colors py-2">Home</a></li>
+                        <!-- <li><a href="#" class="block hover:text-gray-200 transition-colors py-2">Home</a></li> -->
                         <li><a href="#activities" class="block hover:text-gray-200 transition-colors py-2">Activités</a></li>
                         <li><a href="activities.php#reviews-contact" class="block hover:text-gray-200 transition-colors py-2">Contact</a></li>
                         <li><a href="activities.php#about-us" class="block hover:text-gray-200 transition-colors py-2">About Us</a></li>
