@@ -47,4 +47,28 @@ class Admins{
             return false;
         }
 }
+public function loginAdmin($email,$password){
+    $this->email = $email;
+
+    $query = "select * from user where email = :email";
+    $stmt = $this->conn->prepare($query);   
+    
+    $stmt->bindParam(':email',$this->email);
+
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0 ){
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if(password_verify($password,$user['password'])){
+            return $user;
+        }
+        else{
+            echo "Invalid password";
+        }
+    }
+    else{
+        echo "no user found";
+    }
+}
 }
