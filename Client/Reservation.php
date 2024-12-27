@@ -26,4 +26,21 @@ class Reservation{
             echo "error in create reservation";
         }
     }
+    public function historyReservation($id){
+
+        $sql = "select activite.titre,reservation.* from reservation join activite on activite.idActivite = reservation.id_activite where id_user = :id";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(":id",$id);
+        if($stmt->execute()){
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else{
+            return false;
+            echo "error in get all reservation";
+        }
+
+
+    }
 }
