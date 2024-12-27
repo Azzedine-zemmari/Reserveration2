@@ -1,6 +1,6 @@
 <?php 
 
-require "../Client/GetClient.php";
+require "./GetClient.php";
 
 $ClientClass = new clients();
 $client = $ClientClass->getClients();
