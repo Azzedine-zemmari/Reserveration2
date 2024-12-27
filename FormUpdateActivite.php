@@ -1,7 +1,12 @@
 <?php
+session_start();
 require "./Activite.php";
 $ClsConn = new connection();
 $conn = $ClsConn->getConnection();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    echo "u shouldnot be here get out ";
+    exit();
+}
 
 $id = $_GET['activite_id'];
 

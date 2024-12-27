@@ -1,6 +1,9 @@
 <?php
+session_start();
 require "../Config.php" ;
-
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    exit();
+}
 
 class BannClass{
     private $conn;

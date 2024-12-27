@@ -5,7 +5,7 @@ class Connection {
     private $host = "localhost";
     private $dbName = "Rev2";
     private $userName = "root";
-    private $userPass = "";
+    private $userPass = "Azzedine2004";
     private $db;
 
 

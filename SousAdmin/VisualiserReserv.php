@@ -1,6 +1,10 @@
 
 <?php 
-
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    echo "u shouldnot be here get out ";
+    exit();
+}
 require "./GetReservation.php";
 
 $Reservation = new Reservation();

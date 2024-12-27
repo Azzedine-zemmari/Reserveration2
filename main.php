@@ -3,6 +3,10 @@ require "./Admin.php";
 $AdminClass = new Admins();
 $adminFn = $AdminClass->getAdmins();
 
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    echo "u shouldnot be here get out ";
+    exit();
+}
 ?>
 
 

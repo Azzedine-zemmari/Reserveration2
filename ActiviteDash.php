@@ -1,7 +1,13 @@
 <?php
+session_start();
 require "./Activite.php";
 $ActiviteClass = new Activite();
 $activitFn = $ActiviteClass->getActivite();
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    echo "u shouldnot be here get out ";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

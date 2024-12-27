@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
     $class = new clientAuth();
     $obj = $class->loginClient($email,$password);
     if($obj){
-        echo "welecome home";
+        header("Location: ../activities.php ");
     }
     else{
         echo "error";

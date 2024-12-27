@@ -1,8 +1,12 @@
 <?php
+session_start();
 require "./Activite.php";
 $ClsConn = new connection();
 $conn = $ClsConn->getConnection();
-
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    echo "u shouldnot be here get out ";
+    exit();
+}
 $sql = "select DISTINCT type from activite ";
 $stmt = $conn->prepare($sql);
 if ($stmt->execute()) {
