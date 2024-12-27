@@ -63,8 +63,7 @@ $history = $cls->historyReservation($id);
                         <td class="px-2 md:px-6 py-3"><?php echo $c['titre'] ?></td>
                         <td class="px-2 md:px-6 py-3"><?php echo $c['status'] ?></td>
                         <td class="px-2 md:px-6 py-3 flex space-x-2">
-                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./ConfirmRes.php?activite_id=<?php echo $c['id_reservation'] ?>">Confirme</a>
-                            <a class="bg-red-400 text-white p-3 rounded-lg" href="./DenyRes.php?activite_id=<?php echo $c['id_reservation'] ?>">Deny</a>
+                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./UpdateReservationPage.php?idReservation=<?php echo $c['id_reservation'] ?>">Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

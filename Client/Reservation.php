@@ -41,6 +41,38 @@ class Reservation{
             echo "error in get all reservation";
         }
 
+    }
+    public function modifierReservation($id,$Activte){
+        // to check if the status is annuler or not
+        $checkStatusSQL = "SELECT status FROM reservation WHERE id_reservation = :id";
+        $checkStmt = $this->conn->prepare($checkStatusSQL);
+        $checkStmt->bindParam(":id", $id);
+        $checkStmt->execute();
+
+        // Fetch the status
+        $status = $checkStmt->fetchColumn();
+
+
+        if ($status === 'Annulee') {
+            // Status is "Annulée", do not update
+            return "Reservation cannot be modified because it is annulée.";
+        }
+        else{
+            $sql = "update reservation set id_Activite = :activite where id_reservation = :id";
+    
+            $stmt = $this->conn->prepare($sql);
+    
+            $stmt->bindParam(":id",$id);
+            $stmt->bindParam(":activite",$Activte);
+    
+            if($stmt->execute()){
+                return true;
+                echo "correct";
+            }
+            else{
+                return false;
+            }
+        }
 
     }
 }
