@@ -70,8 +70,7 @@ $client = $ClientClass->getClients();
                         <td class="px-2 md:px-6 py-3"><?php echo $c['password'] ?></td>
                         <td class="px-2 md:px-6 py-3"><?php echo $c['role'] ?></td>
                         <td class="px-2 md:px-6 py-3 flex space-x-2">
-                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./FormUpdateActivite.php?activite_id=<?php echo $act['idActivite'] ?>">Edit</a>
-                            <a class="bg-red-400 text-white p-3 rounded-lg" href="#">Delete</a>
+                            <a class="bg-red-400 text-white p-3 rounded-lg" href="./BannFile.php?user_id=<?php echo $c['id'] ?>">Banner</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
