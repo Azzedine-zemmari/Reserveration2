@@ -35,19 +35,18 @@ $history = $cls->historyReservation($id);
     </div>
     <main class="flex">
         <aside class ="hidden md:flex flex-col shadow-sm w-56 bg-gray-800 h-screen">
-        <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-green-600">
+        <!-- <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-green-600">
                 <img src="./images/hire.png" class="w-8 h-8" alt="">
                 <a href="./index.php" class="w-20 text-white">Admins</a>
             </div>
             <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-red-600">
                 <img src="./images/travel-bag.png" class="w-8 h-8" alt="">
                 <a href="./Activite/activite.php" class="w-20 text-white">Register</a>
-            </div>
+            </div> -->
         </aside>
         <section class="w-screen md:w-[calc(100%-224px)]">
         <div class="bg-gradient-to-r from-[#2f88da] to-[#07075a] px-5 py-3 flex justify-between w-full rounded-bl-lg rounded-br-lg">
             <h1 class="text-white font-bold">Client table</h1>
-            <a class="bg-green-400 text-white px-2 py-1 rounded-md" href="./RegisterAdmin.php">add admin</a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left table-auto">

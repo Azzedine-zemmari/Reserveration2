@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
     $Cls = new clientAuth();
     $method = $Cls->registerClient($nom,$prenom,$email,$password);
     if($method){
-        header("Location: ../Home.php");
+        header("Location: ../activities.php ");
     }
     else{
         echo "daa3na";

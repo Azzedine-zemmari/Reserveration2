@@ -6,16 +6,16 @@
         $class = new Admins();
         $obj = $class->loginAdmin($email,$password);
         if($obj){
-            echo "welecome home";
+            header("Location: ./SousAdmin/UsersDash.php");
         }
         else{
             echo "error";
         }
     }
-    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-        echo "u shouldnot be here get out ";
-        exit();
-    }
+    // if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    //     echo "u shouldnot be here get out ";
+    //     exit();
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -90,9 +90,7 @@
     <main class="min-h-screen flex items-center justify-center py-12 px-4">
         <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
             <!-- Logo -->
-            <div class="flex justify-center">
-                <img src="./image/ochef-removebg-preview.png" alt="Logo" class="h-20 w-auto">
-            </div>
+          
 
             <!-- Header -->
             <div class="text-center">

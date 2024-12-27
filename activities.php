@@ -127,7 +127,7 @@ $display = new Display();
                             <li><a href="#activities" class="hover:text-gray-200 transition-colors">Activités</a></li>
                             <li><a href="activities.php#reviews-contact" class="hover:text-gray-200 transition-colors">Contact</a></li>
                             <li><a href="activities.php#about-us" class="hover:text-gray-200 transition-colors">About Us</a></li>
-                            <li><a href="LoginAdmin.php" class="hover:text-gray-200 transition-colors">Login</a></li>
+                            <li><a href="./logout.php" class="hover:text-gray-200 transition-colors">logout</a></li>
                         </ul>
                     </nav>
 

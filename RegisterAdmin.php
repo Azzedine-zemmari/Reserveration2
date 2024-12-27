@@ -1,10 +1,16 @@
 <?php
 require "./Admin.php";
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    echo "u shouldnot be here get out ";
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login or show a message
+    header("Location: ./loginAdmin.php");
     exit();
 }
 
+// Optional: Role-based access control
+if ($_SESSION['role'] !== 'admin') {
+    echo "You do not have permission to access this page.";
+    exit();
+}
 //get class Admin
 
 if(isset($_POST['submit'])){

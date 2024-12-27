@@ -34,6 +34,7 @@ $client = $ClientClass->getClients();
             <li class="mt-1"><a class="font-bold border-b-2 border-b-green-600" href="#">client</a></li>
             <li class="mt-2"><a class="font-bold border-b-2 border-b-red-600" href="./Activite/activite.php">activite</a></li>
             <li class="my-2"><a class="font-bold border-b-2 border-b-yellow-600" href="./Reserve/reservation.php">reservation</a></li>
+            <li class="my-2"><a class="font-bold border-b-2 border-b-yellow-600" href="../logoutAdmin.php">logout</a></li>
         </ul>
     </div>
     <main class="flex">
@@ -50,7 +51,6 @@ $client = $ClientClass->getClients();
         <section class="w-screen md:w-[calc(100%-224px)]">
         <div class="bg-gradient-to-r from-[#2f88da] to-[#07075a] px-5 py-3 flex justify-between w-full rounded-bl-lg rounded-br-lg">
             <h1 class="text-white font-bold">Client table</h1>
-            <a class="bg-green-400 text-white px-2 py-1 rounded-md" href="./RegisterAdmin.php">add admin</a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left table-auto">
