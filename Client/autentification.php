@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "../Config.php";
 
 class clientAuth{
@@ -32,6 +32,10 @@ class clientAuth{
         $stmt->bindParam(":password",$this->password);
 
         if($stmt->execute()){
+            $user_id = $this->conn->lastInsertId();
+
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['role'] = 'user';
             return true;
         }
         else{
@@ -53,6 +57,8 @@ public function loginClient($email,$password){
         $USER = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if(password_verify($password,$USER['password'])){
+            $_SESSION['user_id'] = $USER['id'];
+            $_SESSION['role'] = 'user';
             return true;
         }
         else{

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "./Config.php";
 
 class Admins{
@@ -41,6 +41,10 @@ class Admins{
         $stmt->bindParam(":role",$this->role);
 
         if($stmt->execute()){
+            $user_id = $this->conn->lastInsertId();
+
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['role'] = 'admin';
             return true;
         }
         else{
@@ -61,6 +65,8 @@ public function loginAdmin($email,$password){
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if(password_verify($password,$user['password'])){
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['role'] = 'admin';
             return true;
         }
         else{
