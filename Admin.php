@@ -64,14 +64,20 @@ public function loginAdmin($email,$password){
     if($stmt->rowCount() > 0 ){
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if(password_verify($password,$user['password'])){
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['role'] = 'admin';
-            return true;
-        }
-        else{
-            return false;
-            echo "Invalid password";
+        if ($user['role'] == 'superAdmin') {
+            // Allow plain text password for super admin
+            if ($password == $user['password']) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = 'superAdmin';
+                return true;
+            }
+        } else {
+            // Hash verification for regular admins
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = 'admin';
+                return true;
+            }
         }
     }
     else{

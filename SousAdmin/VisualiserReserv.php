@@ -1,8 +1,8 @@
 
 <?php 
 session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    echo "u shouldnot be here get out ";
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superAdmin')) {
+    echo "Access denied!";
     exit();
 }
 require "./GetReservation.php";
@@ -23,7 +23,7 @@ $res = $Reservation->getReservation();
     <header class="flex justify-between px-2 py-3 bg-gray-800">
         <img src="./images/logo-white.png" class="w-40" alt="">
         <div class="flex gap-3 items-center">
-            <img src="./images/avatar.png" class="w-10 h-10" alt="">
+            <img src="../images/avatar.png" class="w-10 h-10" alt="">
             <p class="text-white font-bold  " id="adminMenu">Hi,Admin</p>
         </div>
     </header>
@@ -36,18 +36,14 @@ $res = $Reservation->getReservation();
     </div>
     <main class="flex">
         <aside class ="hidden md:flex flex-col shadow-sm w-56 bg-gray-800 h-screen">
-        <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-green-600">
-                <img src="./images/hire.png" class="w-8 h-8" alt="">
-                <a href="./index.php" class="w-20 text-white">Admins</a>
-            </div>
             <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-red-600">
-                <img src="./images/travel-bag.png" class="w-8 h-8" alt="">
-                <a href="./Activite/activite.php" class="w-20 text-white">Register</a>
+                <img src="../images/hire.png" class="w-8 h-8" alt="">
+                <a href="./UsersDash.php" class="w-20 text-white">Users</a>
             </div>
         </aside>
         <section class="w-screen md:w-[calc(100%-224px)]">
         <div class="bg-gradient-to-r from-[#2f88da] to-[#07075a] px-5 py-3 flex justify-between w-full rounded-bl-lg rounded-br-lg">
-            <h1 class="text-white font-bold">Client table</h1>
+            <h1 class="text-white font-bold">reservation table</h1>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left table-auto">

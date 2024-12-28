@@ -2,6 +2,11 @@
 
 require "./Reservation.php";
 
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superAdmin' && $_SESSION['role'] !== 'user')) {
+    echo "Access denied!";
+    exit();
+}
+
 $cls = new connection();
 $connection = $cls->getConnection();
 

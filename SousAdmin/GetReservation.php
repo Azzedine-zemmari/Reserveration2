@@ -11,7 +11,13 @@ class Reservation{
 
 
     public function getReservation(){
-        $sql = "select reservation.id_reservation, activite.titre , user.nom , reservation.status from reservation join user on user.id = reservation.id_reservation join activite on reservation.id_activite = activite.idActivite;";
+        $sql = "SELECT reservation.id_reservation, 
+                activite.titre, 
+                user.nom, 
+                reservation.status 
+            FROM reservation 
+            JOIN user ON user.id = reservation.id_user 
+            JOIN activite ON reservation.id_activite = activite.idActivite;";
 
         $stmt = $this->conn->prepare($sql);
 

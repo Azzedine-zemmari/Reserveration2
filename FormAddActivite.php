@@ -3,8 +3,8 @@ session_start();
 require "./Activite.php";
 $ClsConn = new connection();
 $conn = $ClsConn->getConnection();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    echo "u shouldnot be here get out ";
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superAdmin')) {
+    echo "Access denied!";
     exit();
 }
 $sql = "select DISTINCT type from activite ";
@@ -52,10 +52,6 @@ if(isset($_POST['submit'])){
 <body class="bg-gray-50">
     <main class="min-h-screen flex items-center justify-center py-12 px-4">
         <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
-            <!-- Logo -->
-            <div class="flex justify-center">
-                <img src="./image/ochef-removebg-preview.png" alt="Logo" class="h-20 w-auto">
-            </div>
 
             <!-- Form -->
             <form id="signupForm" action="" method="POST" class="mt-8 space-y-6">
@@ -132,7 +128,7 @@ if(isset($_POST['submit'])){
                     <button type="submit"
                         name="submit"
                         class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
-                        Sign up
+                        Add activite
                     </button>
                 </div>
             </form>

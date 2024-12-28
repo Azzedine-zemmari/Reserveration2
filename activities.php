@@ -60,16 +60,53 @@ class Display {
         }
         foreach ($activites as $activite) {
             echo '
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white transform transition-all hover:scale-105 hover:shadow-xl hover:translate-y-2 duration-300 ease-in-out">
-                <div class="p-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">' . htmlspecialchars($activite['titre']) . '</h2>
-                    <p class="text-gray-600 mb-4">' . htmlspecialchars($activite['description']) . '</p>
-                        <a href="./Client/ReservationPage.php" name="reservation" class="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300">
-                            Réservation
+            <div class="relative bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 ease-in-out">
+                <div class="p-8 space-y-6">
+                    <!-- Header Section -->
+                    <div class="space-y-2">
+                        <h2 class="text-xl font-medium text-gray-800">' . $activite['titre'] . '</h2>
+                        <p class="text-sm text-gray-500 leading-relaxed">' . $activite['description'] . '</p>
+                    </div>
+                    
+                    <!-- Details Section -->
+                    <div class="space-y-4 border-t border-gray-100 pt-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Prix</span>
+                            <span class="text-sm font-medium text-gray-800">' . $activite['prix'] . ' €</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Période</span>
+                            <span class="text-sm text-gray-800">
+                                ' . $activite['date_debut'] . ' - ' . $activite['date_fin'] . '
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Type</span>
+                            <span class="text-sm font-medium text-gray-800">' . $activite['type'] . '</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Places disponibles</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                ' . $activite['places_disponibles'] . '
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Button -->
+                    <div class="pt-4">
+                        <a href="./Client/ReservationPage.php" 
+                           name="reservation" 
+                           class="block w-full text-center px-6 py-3 text-sm font-medium text-gray-700 bg-gray-50 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
+                            Réserver
                         </a>
+                    </div>
                 </div>
             </div>';
         }
+        
     }
 }
 
@@ -126,7 +163,7 @@ $display = new Display();
                             <li><a href="#" class="hover:text-gray-200 transition-colors">Home</a></li>
                             <li><a href="#activities" class="hover:text-gray-200 transition-colors">Activités</a></li>
                             <li><a href="activities.php#reviews-contact" class="hover:text-gray-200 transition-colors">Contact</a></li>
-                            <li><a href="activities.php#about-us" class="hover:text-gray-200 transition-colors">About Us</a></li>
+                            <li><a href="./Client/HistoryReservation.php" class=" hover:text-gray-200 transition-colors py-2">ReservationDash</a></a></li>
                             <li><a href="./logout.php" class="hover:text-gray-200 transition-colors">logout</a></li>
                         </ul>
                     </nav>
@@ -152,7 +189,7 @@ $display = new Display();
                         <li><a href="#" class="block hover:text-gray-200 transition-colors py-2">Home</a></li>
                         <li><a href="#activities" class="block hover:text-gray-200 transition-colors py-2">Activités</a></li>
                         <li><a href="activities.php#reviews-contact" class="block hover:text-gray-200 transition-colors py-2">Contact</a></li>
-                        <li><a href="activities.php#about-us" class="block hover:text-gray-200 transition-colors py-2">About Us</a></li>
+                        <li><a href="./Client/HistoryReservation.php" class="block hover:text-gray-200 transition-colors py-2">ReservationDash</a></a></li>
                         <li><a href="LoginAdmin.php" class="block hover:text-gray-200 transition-colors py-2">Login</a></li>
                     </ul>
                     <form method="POST" action="" class="flex flex-col space-y-2">

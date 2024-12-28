@@ -3,8 +3,8 @@ require "./Admin.php";
 $AdminClass = new Admins();
 $adminFn = $AdminClass->getAdmins();
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    echo "u shouldnot be here get out ";
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superAdmin')) {
+    echo "Access denied!";
     exit();
 }
 ?>
@@ -37,11 +37,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
         <aside class ="hidden md:flex flex-col shadow-sm w-56 bg-gray-800 h-screen">
         <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-green-600">
                 <img src="./images/hire.png" class="w-8 h-8" alt="">
-                <a href="./index.php" class="w-20 text-white">Admins</a>
+                <a href="./ActiviteDash.php" class="w-20 text-white">Activite</a>
             </div>
             <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-red-600">
                 <img src="./images/travel-bag.png" class="w-8 h-8" alt="">
-                <a href="./Activite/activite.php" class="w-20 text-white">Register</a>
+                <a href="./SousAdmin/UsersDash.php" class="w-20 text-white">Users</a>
             </div>
         </aside>
         <section class="w-screen md:w-[calc(100%-224px)]">
@@ -59,7 +59,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                         <th class="px-2 md:px-6 py-3">email</th>
                         <th class="px-2 md:px-6 py-3">password</th>
                         <th class="px-2 md:px-6 py-3">role</th>
-                        <th class="px-2 md:px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,10 +70,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                         <td class="px-2 md:px-6 py-3"><?php echo $admin['email'] ?></td>
                         <td class="px-2 md:px-6 py-3"><?php echo $admin['password'] ?></td>
                         <td class="px-2 md:px-6 py-3"><?php echo $admin['role'] ?></td>
-                        <td class="px-2 md:px-6 py-3 flex space-x-2">
-                            <a class="bg-blue-400 text-white p-3 rounded-lg" href="./Client/EditClient.php?client_id=">Edit</a>
-                            <a class="bg-red-400 text-white p-3 rounded-lg" href="./Client/DeleteClient.php?client_id=">Delete</a>
-                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

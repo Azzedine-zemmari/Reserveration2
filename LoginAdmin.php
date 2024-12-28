@@ -96,8 +96,8 @@
             <div class="text-center">
                 <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign up</h2>
                 <p class="mt-2 text-sm text-gray-600">
-                    Already have an account? 
-                    <a href="" class="font-medium text-indigo-600 hover:text-indigo-500">Sign up here</a>
+                    new here? 
+                    <a href="./RegisterAdmin.php" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in here</a>
                 </p>
             </div>
 

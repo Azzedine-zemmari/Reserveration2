@@ -1,16 +1,5 @@
 <?php
 require "./Admin.php";
-if (!isset($_SESSION['user_id'])) {
-    // Redirect to login or show a message
-    header("Location: ./loginAdmin.php");
-    exit();
-}
-
-// Optional: Role-based access control
-if ($_SESSION['role'] !== 'admin') {
-    echo "You do not have permission to access this page.";
-    exit();
-}
 //get class Admin
 
 if(isset($_POST['submit'])){
@@ -41,17 +30,13 @@ if(isset($_POST['submit'])){
 <body class="bg-gray-50">
     <main class="min-h-screen flex items-center justify-center py-12 px-4">
         <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
-            <!-- Logo -->
-            <div class="flex justify-center">
-                <img src="./images/ochef-removebg-preview.png" alt="Logo" class="h-20 w-auto">
-            </div>
 
             <!-- Header -->
             <div class="text-center">
-                <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign up</h2>
+                <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign in</h2>
                 <p class="mt-2 text-sm text-gray-600">
                     Already have an account? 
-                    <a href="./login.php" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in here</a>
+                    <a href="./LoginAdmin.php" class="font-medium text-indigo-600 hover:text-indigo-500">Sign up here</a>
                 </p>
             </div>
 

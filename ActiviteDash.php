@@ -4,8 +4,8 @@ require "./Activite.php";
 $ActiviteClass = new Activite();
 $activitFn = $ActiviteClass->getActivite();
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    echo "u shouldnot be here get out ";
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superAdmin')) {
+    echo "Access denied!";
     exit();
 }
 ?>
@@ -30,11 +30,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
         <aside class="hidden md:flex flex-col shadow-sm w-56 bg-gray-800 h-screen">
             <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-green-600">
                 <img src="./images/hire.png" class="w-8 h-8" alt="">
-                <a href="./index.php" class="w-20 text-white">Admins</a>
+                <a href="./SousAdmin/UsersDash.php" class="w-20 text-white">users</a>
             </div>
             <div class="flex gap-5 items-center pl-3 py-2 border-b-2 border-red-600">
                 <img src="./images/travel-bag.png" class="w-8 h-8" alt="">
-                <a href="./Activite/activite.php" class="w-20 text-white">Activités</a>
+                <a href="./SousAdmin/VisualiserReserv.php" class="w-20 text-white">Reservation</a>
             </div>
         </aside>
         <section class="w-screen md:w-[calc(100%-224px)]">
@@ -43,11 +43,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                 <a class="bg-green-400 text-white px-2 py-1 rounded-md" href="./FormAddActivite.php">Ajouter une activité</a>
             </div>
             <div class="overflow-x-auto">
-                <?php if (isset($_GET['success'])): ?>
-                    <p class="text-green-500 text-center py-2">Activité supprimée avec succès.</p>
-                <?php elseif (isset($_GET['error'])): ?>
-                    <p class="text-red-500 text-center py-2">Erreur lors de la suppression de l'activité.</p>
-                <?php endif; ?>
                 <table class="w-full text-left table-auto">
                     <thead>
                         <tr>

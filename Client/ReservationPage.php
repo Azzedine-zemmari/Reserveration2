@@ -1,7 +1,7 @@
 <?php 
 require "./Reservation.php";
-if (!isset($_SESSION['user_id']) || (!($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin'))) {
-    echo "u shouldnot be here get out ";
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superAdmin' && $_SESSION['role'] !== 'user')) {
+    echo "Access denied!";
     exit();
 }
 $cls = new connection();
